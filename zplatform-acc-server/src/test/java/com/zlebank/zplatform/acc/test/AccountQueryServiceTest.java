@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 import net.sf.json.JSONObject;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,9 +38,9 @@ import com.zlebank.zplatform.member.commons.bean.PagedResult;
  * @date 2016年11月7日 上午9:26:46
  * @since 
  */
-//@Component
+
 public class AccountQueryServiceTest extends BaseTest{
-    
+	 
     @Reference(version="1.0")
     private AccountQueryService accountQuery;
     @Test
@@ -47,7 +50,7 @@ public class AccountQueryServiceTest extends BaseTest{
         assert(status.equals("ok"));*/
        try {
            logger.info("logger is started.....");
-           BusiAcctQuery busiAcctQuery=accountQuery.getBusiQueryBybCode("9010102200000000000604");
+           BusiAcctQuery busiAcctQuery=accountQuery.getBusiQueryBybCode("9010702200000000001223");
            logger.info("result:"+JSONObject.fromObject(busiAcctQuery));
         } catch (Exception e) {
             // TODO: handle exception
@@ -56,7 +59,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getAccEntryByCode(){
         String busiAcctCode="9010102200000000000604";
         Date startTime=new Date(System.currentTimeMillis()-1000*60*60*24*3);
@@ -73,7 +76,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getAccEntryByQuery(){
         AccEntryQuery eQuery=new AccEntryQuery();
         eQuery.setBusiCode("10000001");
@@ -89,7 +92,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getAccountByID(){
         long accountId=1219;
         try {
@@ -101,7 +104,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+   // @Test
     public void getAllBusiByMId(){
         String memberId ="200000000000604";
         try {
@@ -115,7 +118,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getBusiACCByMid(){
         String memberid ="200000000000604";
         try {
@@ -129,7 +132,7 @@ public class AccountQueryServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getMemberQueryByID(){
         String busiAcctCode ="9010102200000000000604";
         try {

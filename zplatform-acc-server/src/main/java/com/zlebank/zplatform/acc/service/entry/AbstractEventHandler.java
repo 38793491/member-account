@@ -87,8 +87,9 @@ public abstract class AbstractEventHandler implements EntryEventHandler {
      */
     protected BigDecimal getAccEntryAmount(String ordform, TradeInfo tradeInfo)
             throws AccBussinessException {
-        ordform = ordform.toUpperCase();
+        ordform = ordform.toUpperCase();//如A+B-c
         // 通道手续费未记账时为0，对账完成后更新值。
+        //JEP是数学表达式工具类，通过ordform这个表达计算相应的金额
         JEP jep = new JEP();
         if (ordform.contains(LITERAL_COMPUTE_FACTOR_PRINCIPAL))
             jep.addVariable(LITERAL_COMPUTE_FACTOR_PRINCIPAL, tradeInfo

@@ -64,8 +64,7 @@ public class ProcessLedgerServiceImpl  implements ProcessLedgerService {
         PojoAbstractSubject pojo=account.getParentSubject();
         boolean firstFlg = true;
         do {
-            if (pojo.getParentSubject() != null
-                    && pojo.getId() == pojo.getParentSubject().getId()) 
+            if (pojo.getParentSubject() != null  && pojo.getId() == pojo.getParentSubject().getId()) 
                 break;// 防止死循环
             if (firstFlg)
                 firstFlg=false;//第一次跳过

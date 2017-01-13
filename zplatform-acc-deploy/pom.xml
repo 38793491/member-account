@@ -275,5 +275,6 @@
 		<module>../zplatform-acc-bean</module>
 		<module>../zplatform-acc-service</module>
 		<module>../zplatform-acc-server</module>
+		<module>../zplatform-acc-simple</module>
 	</modules>
 </project>

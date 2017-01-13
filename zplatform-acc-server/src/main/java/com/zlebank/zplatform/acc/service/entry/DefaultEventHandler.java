@@ -51,12 +51,13 @@ public class DefaultEventHandler extends AbstractEventHandler {
         /* 循环分录规则，插入分录流水 。插入中同时处理同步记账 */
         BigDecimal balanceTest = BigDecimal.ZERO;
         for (PojoSubjectRuleConfigure entryRule : entryRuleList) { 
+        	//通过AcctCodePlaceHolder取得业务参与方的业务账号
             AcctCodePlaceHolder acctCodePlaceHolder = accCodePlaceholderFactory
                     .getAcctCodePlaceholder(entryRule.getAcctCodeType(),
                             entryRule.getAcctCode(), tradeInfo);
 
             String accCode = acctCodePlaceHolder.getAccCode();
-           
+           //计算分录金额
             BigDecimal accrual = getAccEntryAmount(
                     entryRule.getEntryAlgorithm(), tradeInfo);
             
@@ -103,10 +104,12 @@ public class DefaultEventHandler extends AbstractEventHandler {
 
     /**
      * 将分录流水持久化，返回需要同步记账的分录流水
-     * 
-     * @param tradeInfo
-     * @param rule
-     * @param balanceTest
+     * @param accCode 账户号
+     * @param accrual 分录金额
+     * @param tradeInfo 交易数据
+     * @param rule  分录规则
+     * @param entryEvent 交易事件
+     * @param balanceTest 
      * @return
      * @throws AccBussinessException
      * @throws AbstractBusiAcctException

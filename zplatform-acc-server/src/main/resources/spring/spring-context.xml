@@ -19,10 +19,10 @@
 	    <property name="ignoreUnresolvablePlaceholders" value="true" />  
 		<property name="locations">
 			<list>
-				<!-- <value>classpath:*.properties</value> -->
-				<value>classpath:acc_exception.properties</value>
+				<value>classpath:*.properties</value>
+				<!-- <value>classpath:acc_exception.properties</value>
 				<value>file:F:/workContent/config/acc/*.properties</value>  
-          		<value>classpath:./conf/config.properties</value>
+          		<value>classpath:./conf/config.properties</value> -->
 			</list>
 		</property>
 	</bean>
