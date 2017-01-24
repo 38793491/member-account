@@ -10,6 +10,8 @@
  */
 package com.zlebank.zplatform.acc.test;
 
+import java.io.Serializable;
+
 import net.sf.json.JSONObject;
 
 import org.junit.Assert;
@@ -19,7 +21,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.zlebank.zplatform.acc.bean.Account;
 import com.zlebank.zplatform.acc.bean.Subject;
 import com.zlebank.zplatform.acc.service.AccountService;
-import com.zlebank.zplatform.member.commons.service.impl.BusinessActor;
+import com.zlebank.zplatform.member.commons.bean.PersonBusi;
 import com.zlebank.zplatform.member.commons.service.impl.Individual;
 
 /**
@@ -30,7 +32,7 @@ import com.zlebank.zplatform.member.commons.service.impl.Individual;
  * @date 2016年11月14日 下午6:00:07
  * @since 
  */
-public class AccountServiceTest extends BaseTest{
+public class AccountServiceTest extends BaseTest implements Serializable{
         
     @Reference(version="1.0")
     private AccountService accountService;
@@ -48,7 +50,7 @@ public class AccountServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getAccountBalanceById(){
         long accountId=1222;
         try {
@@ -60,7 +62,7 @@ public class AccountServiceTest extends BaseTest{
             Assert.fail();
         }
     }
-    @Test
+    //@Test
     public void getByAcctCode(){
         String acctCode="224502200000000000611";
         try {
@@ -76,25 +78,13 @@ public class AccountServiceTest extends BaseTest{
     @Test
     public void openAcct(){
         Account account=new Account();
-        account.setAcctCodeName("测试开户");
+        account.setAcctCodeName("匿名");
         Subject subject =new Subject();
         subject.setId(290);
         account.setParentSubject(subject);
-        final String actorId="100000000000616";
-        BusinessActor member=new Individual() {
-            
-            /**
-             * serialVersionUID
-             */
-            private static final long serialVersionUID = 3694989637326382326L;
-
-            @Override
-            public String getBusinessActorId() {
-                // TODO Auto-generated method stub
-                return actorId;
-            }
-        };
-        
+        final String actorId="999999999999999";
+        PersonBusi member=new PersonBusi();
+        member.setBusinessActorId(actorId);
         try {
             accountService.openAcct(account, member, 45);
         } catch (Exception e) {

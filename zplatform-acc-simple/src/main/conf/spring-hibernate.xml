@@ -45,7 +45,7 @@
 	<!-- session工厂 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="accDataSource" />
+		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
 				<value>com.zlebank.zplatform.acc.pojo.PojoAbstractSubject</value>

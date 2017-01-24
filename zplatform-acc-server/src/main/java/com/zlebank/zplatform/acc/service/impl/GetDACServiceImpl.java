@@ -63,4 +63,14 @@ public class GetDACServiceImpl implements GetDACService{
        if(!oldDac.equals(newDac))
            throw new AccBussinessException("E100005");
     }
+    
+    public static void main(String[] args) {
+    	 StringBuilder dacSourceSb = new StringBuilder();
+         dacSourceSb.append(prefix).append("2243");
+         dacSourceSb.append(prefix).append("1934620574");
+         dacSourceSb.append(prefix).append("0");
+         dacSourceSb.append(prefix).append("1934620574");
+         dacSourceSb.append(prefix).append("");
+         System.out.println(Md5.getInstance().md5s(dacSourceSb.toString()));
+	}
 }
